@@ -79,6 +79,10 @@ export const login = async (req, res) => {
   }
 };
 
+export const updateProfile = async (req, res) => {
+  // For profile updating, to be implemented later
+};
+
 export const logout = (req, res) => {
   try {
     res.cookie("jwt", "", { maxAge: 0 });
