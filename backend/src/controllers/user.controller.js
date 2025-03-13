@@ -2,11 +2,12 @@
 
 export const viewProfile = (req, res) => {
   try {
-    const { email, fullName, profilePic } = req.user;
+    const { email, fullName, profilePic, groups } = req.user;
     res.status(200).json({
       email,
       fullName,
       profilePic,
+      groups,
     });
     // Needs more Information: Expenses, Groups, etc
   } catch (error) {
