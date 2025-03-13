@@ -12,7 +12,7 @@ const port = process.env.PORT;
 
 app.use(express.json()); // Enables extracting json data from req.body
 
-app.use("/api/auth", authRoutes);
+app.use("/api/auth", authRoutes); // Routes for Signup, Login, Logout
 
 app.listen(port, () => {
   console.log("Server is running on PORT: " + port);

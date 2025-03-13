@@ -1,0 +1,7 @@
+./backend/env
+.env*.local
+.env.example
+.env.local
+.env.staging
+backend/.env
+node_modules
