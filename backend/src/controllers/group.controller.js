@@ -1,5 +1,6 @@
 import Group from "../models/group.model.js";
 import User from "../models/user.model.js";
+import mongoose from "mongoose";
 
 export const createGroup = async (req, res) => {
   const { groupName, description, memberIds } = req.body;
@@ -9,6 +10,7 @@ export const createGroup = async (req, res) => {
     }
 
     const currentUserId = req.user._id;
+
     const members = [currentUserId];
 
     // Validate and add additional members if provided
@@ -48,10 +50,7 @@ export const createGroup = async (req, res) => {
 
 export const getUserGroups = async (req, res) => {
   try {
-    const userId = req.user._id;
-
-    // Find groups where the user is a member
-    const groups = await Group.find({ members: userId });
+    const { groups } = req.user;
 
     res.status(200).json(groups);
   } catch (error) {
@@ -63,10 +62,16 @@ export const getUserGroups = async (req, res) => {
 export const getGroupDetails = async (req, res) => {
   try {
     //Get group details
-    const groupId = req.params.id;
-    const userId = req.user._id;
+    const groupId = req.params.groupId;
 
-    res.status(200).json(groupId);
+    // Find the group
+    const group = await Group.findById(groupId);
+
+    if (!group) {
+      return res.status(404).json({ error: "Group not found" });
+    }
+
+    res.status(200).json(group);
   } catch (error) {
     console.log("Error in group controller", error.message);
     res.status(500).json({ message: "Internal Server Error" });

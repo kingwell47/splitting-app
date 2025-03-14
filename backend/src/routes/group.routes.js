@@ -1,5 +1,6 @@
 import express from "express";
 import { protectRoute } from "../middleware/auth.middleware.js";
+import { checkGroupMembership } from "../middleware/group.middleware.js";
 import {
   createGroup,
   getGroupDetails,
@@ -13,6 +14,6 @@ router.post("/", protectRoute, createGroup);
 //Get all groups where user is a member
 router.get("/", protectRoute, getUserGroups);
 //Get the group details
-router.get("/:id", protectRoute, getGroupDetails);
+router.get("/:groupId", protectRoute, checkGroupMembership, getGroupDetails);
 
 export default router;
