@@ -7,6 +7,7 @@ const groupSchema = new mongoose.Schema(
     members: [
       { type: mongoose.Schema.Types.ObjectId, ref: "User", default: [] },
     ],
+    private: { type: Boolean, default: true },
   },
   {
     timestamps: true,

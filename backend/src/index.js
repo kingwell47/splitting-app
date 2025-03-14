@@ -6,6 +6,7 @@ import { connectDB } from "./lib/db.js";
 
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import groupRoutes from "./routes/group.routes.js";
 
 dotenv.config(); // Enables .env file
 const app = express(); // Initializes the server
@@ -17,7 +18,7 @@ app.use(cookieParser()); // Enables parsing of cookies
 
 app.use("/api/auth", authRoutes); // Routes for Signup, Login, Logout
 app.use("/api/user", userRoutes); // Routes for user related stuff
-app.use("/api/groups", () => {}); // Routes for groups
+app.use("/api/groups", groupRoutes); // Routes for groups
 app.use("/api/expenses", () => {}); // Routes for expenses
 
 app.listen(port, () => {

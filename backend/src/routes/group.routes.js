@@ -1,11 +1,18 @@
 import express from "express";
 import { protectRoute } from "../middleware/auth.middleware.js";
+import {
+  createGroup,
+  getGroupDetails,
+  getUserGroups,
+} from "../controllers/group.controller.js";
 
 const router = express.Router();
 
 //Create group
 router.post("/", protectRoute, createGroup);
-//Get all groups
-router.get("/", protectRoute, getGroups);
+//Get all groups where user is a member
+router.get("/", protectRoute, getUserGroups);
+//Get the group details
+router.get("/:id", protectRoute, getGroupDetails);
 
 export default router;
