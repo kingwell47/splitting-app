@@ -6,7 +6,9 @@ const userSchema = new mongoose.Schema(
     fullName: { type: String, required: true },
     password: { type: String, required: true, minlength: 6 },
     profilePic: { type: String, default: "" },
-    groups: [{ type: mongoose.Schema.Types.ObjectId, ref: "Group" }],
+    groups: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Group", default: [] },
+    ],
   },
   { timestamps: true }
 );

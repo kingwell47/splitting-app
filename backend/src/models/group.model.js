@@ -4,7 +4,9 @@ const groupSchema = new mongoose.Schema(
   {
     groupName: { type: String, required: true },
     description: String,
-    members: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    members: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "User", default: [] },
+    ],
   },
   {
     timestamps: true,

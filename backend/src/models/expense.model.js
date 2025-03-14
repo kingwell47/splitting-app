@@ -5,7 +5,7 @@ const expenseSchema = new mongoose.Schema(
     groupId: { type: mongoose.Schema.Types.ObjectId, ref: "Group" },
     expenseName: { type: String, required: true },
     amount: { type: Number, required: true },
-    category: String,
+    category: { type: String, required: true },
     paidBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     splitDetails: [
       {
